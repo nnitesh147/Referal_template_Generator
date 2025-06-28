@@ -90,9 +90,28 @@ const Form = ({ set_result, toggle }: form_props) => {
     }));
   };
 
+  const saveData = async () => {
+    const data = {
+      cgpa: formData.cgpa,
+      college: formData.college,
+      contact: formData.contact,
+      current_company: formData.current_company,
+      current_role: formData.current_role,
+      email: formData.email,
+      resume_link: formData.resume_link,
+      short_description: formData.short_description,
+    };
+
+    try {
+      await axios.post(`${host_url}/user`, data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    saveData();
     const result = generateTemplate({ data: formData });
     set_result(result);
     toggle(false);
@@ -138,7 +157,7 @@ const Form = ({ set_result, toggle }: form_props) => {
                       value={formData.referee_name}
                       onChange={handleInputChange}
                       placeholder="Enter the Refree Name"
-                      //required
+                      required
                     />
                   </div>
                   <div className="space-y-2">
@@ -150,7 +169,7 @@ const Form = ({ set_result, toggle }: form_props) => {
                       value={formData.applying_company}
                       onChange={handleInputChange}
                       placeholder="Enter the company you're applying to"
-                      //required
+                      required
                     />
                   </div>
                   <div className="space-y-2">
@@ -162,7 +181,7 @@ const Form = ({ set_result, toggle }: form_props) => {
                       value={formData.applying_role}
                       onChange={handleInputChange}
                       placeholder="Enter the role you're applying for"
-                      //required
+                      required
                     />
                   </div>
                 </div>
@@ -177,7 +196,7 @@ const Form = ({ set_result, toggle }: form_props) => {
                       value={formData.job_id}
                       onChange={handleInputChange}
                       placeholder="Enter the job ID"
-                      //required
+                      required
                     />
                   </div>
                   <div className="space-y-2">
@@ -209,7 +228,7 @@ const Form = ({ set_result, toggle }: form_props) => {
                       value={formData.first_name}
                       onChange={handleInputChange}
                       placeholder="Enter your first name"
-                      //required
+                      required
                     />
                   </div>
                   <div className="space-y-2">
@@ -221,7 +240,7 @@ const Form = ({ set_result, toggle }: form_props) => {
                       value={formData.email}
                       onChange={handleInputChange}
                       placeholder="Enter your email address"
-                      //required
+                      required
                     />
                   </div>
                 </div>
@@ -234,7 +253,7 @@ const Form = ({ set_result, toggle }: form_props) => {
                     value={formData.contact}
                     onChange={handleInputChange}
                     placeholder="Enter your contact number"
-                    //required
+                    required
                   />
                 </div>
               </div>
@@ -254,7 +273,7 @@ const Form = ({ set_result, toggle }: form_props) => {
                       value={formData.college}
                       onChange={handleInputChange}
                       placeholder="Enter your college/university name"
-                      //required
+                      required
                     />
                   </div>
                   <div className="space-y-2">
@@ -269,7 +288,7 @@ const Form = ({ set_result, toggle }: form_props) => {
                       value={formData.cgpa}
                       onChange={handleInputChange}
                       placeholder="Enter your CGPA (e.g., 8.5)"
-                      //required
+                      required
                     />
                   </div>
                 </div>
@@ -290,7 +309,7 @@ const Form = ({ set_result, toggle }: form_props) => {
                       value={formData.current_company}
                       onChange={handleInputChange}
                       placeholder="Enter your current company name"
-                      //required
+                      required
                     />
                   </div>
                   <div className="space-y-2">
@@ -302,7 +321,7 @@ const Form = ({ set_result, toggle }: form_props) => {
                       value={formData.current_role}
                       onChange={handleInputChange}
                       placeholder="Enter your current role/position"
-                      //required
+                      required
                     />
                   </div>
                 </div>
@@ -322,7 +341,7 @@ const Form = ({ set_result, toggle }: form_props) => {
                     value={formData.resume_link}
                     onChange={handleInputChange}
                     placeholder="Enter your resume URL (Google Drive, Dropbox, etc.)"
-                    //required
+                    required
                   />
                 </div>
                 <div className="space-y-2">
@@ -334,7 +353,7 @@ const Form = ({ set_result, toggle }: form_props) => {
                     onChange={handleInputChange}
                     placeholder="Brief description about yourself, your experience, or why you're interested in this role..."
                     className="min-h-[120px] resize-none"
-                    //required
+                    required
                   />
                 </div>
               </div>

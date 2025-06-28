@@ -26,6 +26,5 @@ export const generateTemplate = ({ data }: { data: FormData }): string => {
     ${data.email}\n
     ${data.contact}\n
     `;
-  console.log(template);
   return template;
 };
