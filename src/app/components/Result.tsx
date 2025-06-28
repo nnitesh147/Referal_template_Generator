@@ -2,8 +2,8 @@
 import React, { Dispatch, SetStateAction } from "react";
 
 type result_props = {
-  toggle: Dispatch<SetStateAction<Boolean>>;
-  value: String;
+  toggle: Dispatch<SetStateAction<boolean>>;
+  value: string;
 };
 
 const Result = ({ toggle, value }: result_props) => {

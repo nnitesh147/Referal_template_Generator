@@ -4,8 +4,8 @@ import Form from "./components/Form";
 import Result from "./components/Result";
 
 export default function Home() {
-  const [show_form, set_show_form] = useState<Boolean>(true);
-  const [result, set_result] = useState<String>("");
+  const [show_form, set_show_form] = useState<boolean>(true);
+  const [result, set_result] = useState<string>("");
   return (
     <div>
       {show_form ? (

@@ -46,13 +46,13 @@ export async function POST(req: Request) {
     }) as WebhookEvent;
   } catch (err) {
     console.error("Error verifying webhook:", err);
-    return new Response("Error occurred", {
+    return new Response(`Error occurred ${err}`, {
       status: 400,
     });
   }
 
   // Get the ID and type
-  const { id, ...attributes } = evt.data;
+  const { id } = evt.data;
   const eventType = evt.type;
   if (eventType === "user.created" && id) {
     try {
@@ -61,7 +61,7 @@ export async function POST(req: Request) {
         first_name: evt.data.first_name,
       });
     } catch (error) {
-      return new Response("db issue", {
+      return new Response(`${error}`, {
         status: 500,
       });
     }

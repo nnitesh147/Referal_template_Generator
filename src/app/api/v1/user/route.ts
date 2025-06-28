@@ -4,7 +4,7 @@ import { users } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
-export async function GET(req: Request) {
+export async function GET() {
   const { userId, isAuthenticated } = await auth();
 
   if (!isAuthenticated) {
@@ -29,17 +29,15 @@ export async function GET(req: Request) {
       .where(eq(users.external_id, userId));
     return NextResponse.json(data, { status: 200 });
   } catch (error) {
-    return NextResponse.json("Internal Server Error", { status: 500 });
+    return NextResponse.json(`Internal Server Error ${error}`, { status: 500 });
   }
 }
 
-export async function POST(req: Request) {
-  const { userId, isAuthenticated } = await auth();
-
-  if (!isAuthenticated) {
-    return NextResponse.json("Not Authenticated", { status: 403 });
-  }
-
-  try {
-  } catch (error) {}
-}
+// export async function POST(req: Request) {
+//   const { userId, isAuthenticated } = await auth();
+//   if (!isAuthenticated) {
+//     return NextResponse.json("Not Authenticated", { status: 403 });
+//   }
+//   try {
+//   } catch (error) {}
+// }

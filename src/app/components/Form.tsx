@@ -18,8 +18,8 @@ import ErrorComponent from "./ErrorComponent";
 import { generateTemplate } from "../constants/template";
 
 type form_props = {
-  set_result: Dispatch<SetStateAction<String>>;
-  toggle: Dispatch<SetStateAction<Boolean>>;
+  set_result: Dispatch<SetStateAction<string>>;
+  toggle: Dispatch<SetStateAction<boolean>>;
 };
 export interface FormData {
   applying_company: string;
@@ -39,8 +39,8 @@ export interface FormData {
 }
 
 const Form = ({ set_result, toggle }: form_props) => {
-  const [loading, setloading] = useState<Boolean>(true);
-  const [error, seterror] = useState<Boolean>(false);
+  const [loading, setloading] = useState<boolean>(true);
+  const [error, seterror] = useState<boolean>(false);
 
   const [formData, setformData] = useState<FormData>({
     referee_name: "",
@@ -63,7 +63,7 @@ const Form = ({ set_result, toggle }: form_props) => {
     const getData = async () => {
       try {
         const { data } = await axios.get(`${host_url}/user`);
-        Object.entries(data[0]).map((obj: any) => {
+        Object.entries(data[0]).map((obj) => {
           if (obj[1]) {
             setformData((prev: FormData) => ({
               ...prev,
@@ -73,6 +73,7 @@ const Form = ({ set_result, toggle }: form_props) => {
         });
         setloading(false);
       } catch (error) {
+        console.log(error);
         seterror(true);
       }
     };
