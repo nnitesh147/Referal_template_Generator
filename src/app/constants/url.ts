@@ -1,1 +1,1 @@
-export const host_url = "http://localhost:3000/api/v1";
+export const host_url = "https://referaltemplategenerator.vercel.app/api/v1";
